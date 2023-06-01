@@ -1,0 +1,5 @@
+- name: Instalar e iniciar apache2
+  hosts: 10.201.124.226
+  become: True
+  roles:
+          - {role: apache2, when: ansible_distribution == "Ubuntu"}

@@ -1,0 +1,11 @@
+# Playbook de ejemplo el cual instala apache si es un ubuntu
+# y se inicia el servicio
+- name: Instalar e iniciar apache
+  hosts: 10.201.124.226
+  become: True
+  tasks:
+        - name: Instalar apache2
+          apt: name=apache2 state=latest
+          when: ansible_distribution == "Ubuntu"
+        - name: Iniciar y habilitar el servicio
+          service: name=apache2 state=started enabled=true
